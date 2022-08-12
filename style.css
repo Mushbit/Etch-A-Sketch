@@ -1,0 +1,22 @@
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    border: 2px solid red;
+    width: 1600px;
+    height: 1600px;
+}
+
+
+.tile {
+    margin: 0;
+    padding: 0;
+    border: 2px solid red;
+    width: 96px;
+    height: 96px;
+}
+
+.tile:hover {
+    background-color: blue;
+}
