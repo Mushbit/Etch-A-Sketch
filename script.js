@@ -1,6 +1,9 @@
 let container = document.querySelector('.container');
 let button = document.querySelector('.button');
+let reset = document.querySelector('.reset');
 button.addEventListener('click', askGridSize);
+reset.addEventListener('click', resetGrid)
+
 
 function askGridSize() {
 
@@ -33,8 +36,8 @@ function createGrid(number) {
                 let tile = document.createElement('div');
                 row.appendChild(tile);
                 tile.classList.add('tile', 'opacity');
-                tile.addEventListener('mouseover', setInterval(addRGB), 50)
-                //tile.addEventListener('mouseout', removeRGB)
+                tile.addEventListener('mouseover', addRGB)
+                tile.addEventListener('mouseout', removeRGB)
             }
         let tiles = document.querySelectorAll('.tile');
         tiles.forEach(tile => tile.setAttribute)
@@ -42,9 +45,9 @@ function createGrid(number) {
     }
 }
 
-function removeRGB(event) {
-    event.target.classList.toggle('opacity');
-}
+//function removeRGB(event) {
+//    event.target.classList.toggle('opacity');
+//}
 
 function addRGB(event) {
     const rgb = [];
@@ -52,5 +55,35 @@ function addRGB(event) {
         rgb[i] = Math.floor(Math.random() * 255) +1;
     }
    event.target.style.backgroundColor = 'rgb(' + rgb.join(', ') + ')';
-   event.target.classList.toggle('opacity');
+   let op = 1;
+
+   let timer = setInterval( () => {
+    if (event.target.style.opacity <= 0.5) {
+        clearInterval(timer);
+    }
+    event.target.style.opacity = op;
+    event.target.style.filter = 'alpha(opacity=' + op *100 + ')';
+    op -= op*0.1
+   }, 50);
+  
+}
+
+function removeRGB (event) {
+    let op = 1;
+
+    let timer = setInterval( () => {
+     if (event.target.style.opacity <= 0.5) {
+         clearInterval(timer);
+     }
+     event.target.style.opacity = op;
+     event.target.style.filter = 'alpha(opacity=' + op *100 + ')';
+     op -= op*0.1
+    }, 50);
+    
+}
+
+function resetGrid() {
+    let tiles = document.querySelectorAll('div.tile')
+    console.log(tiles)
+    tiles.forEach( tile => tile.removeAttribute('style', 'background-color'))
 }
