@@ -1,22 +1,32 @@
-#main {
-    display: flex;
-    flex-wrap: wrap;
+body {
     margin: 0;
-    padding: 0;
-    border: 2px solid red;
-    width: 1600px;
-    height: 1600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vh;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+    width: 1000px;
+    border: 1px solid rebeccapurple;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+    border: 1px solid red;
+}
+
+.opacity {
+    opacity: 0;
+}
 
 .tile {
-    margin: 0;
-    padding: 0;
-    border: 2px solid red;
-    width: 96px;
-    height: 96px;
+border: 1px solid yellow;
+flex: 1;
 }
 
-.tile:hover {
-    background-color: blue;
-}
