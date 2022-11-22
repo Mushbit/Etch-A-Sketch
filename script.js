@@ -15,7 +15,7 @@ function askGridSize() {
     }
     createGrid(prompt('How many tiles squared would you like your grid to be?', ''));
 };
-
+createGrid(30)
 
 function createGrid(number) {
 
@@ -44,12 +44,13 @@ function createGrid(number) {
         }
     }
 }
-
-//function removeRGB(event) {
-//    event.target.classList.toggle('opacity');
-//}
+let mouseDown = false
+document.body.onmousedown = () => mouseDown = true;
+document.body.onmouseup = () => mouseDown = false;
 
 function addRGB(event) {
+
+    if (mouseDown) {
     const rgb = [];
     for (let i = 0; i < 3; i++) {
         rgb[i] = Math.floor(Math.random() * 255) +1;
@@ -65,7 +66,7 @@ function addRGB(event) {
     event.target.style.filter = 'alpha(opacity=' + op *100 + ')';
     op -= op*0.1
    }, 50);
-  
+}
 }
 
 function removeRGB (event) {
